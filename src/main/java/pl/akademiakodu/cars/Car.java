@@ -10,13 +10,9 @@ public class Car {
     private String model;
     private String description;
 
-    private static List<Car> cars= new ArrayList<>();
+public Car(){ }
 
 
-    public Car(){
-        cars.add(this);
-    }
-    public static List<Car> findAll() {return cars;}
 
     public String toString(){
         return getBrand()+" "+ getModel()+" "+getDescription();

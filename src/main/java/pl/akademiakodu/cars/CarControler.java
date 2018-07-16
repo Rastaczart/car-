@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @Controller
 public class CarControler {
 
+    private CarDao cardao = new CarStaticDao();
+
     @GetMapping("/")
     public String addCar() {
         return "add";
@@ -18,12 +20,13 @@ public class CarControler {
     public String add(@ModelAttribute
                               Car car, ModelMap modelMap) {
         modelMap.put("car", car);
+        cardao.addCar(car);
         return "show";
     }
 
     @GetMapping("/all")
     public String findAll(ModelMap modelMap) {
-        modelMap.put("cars", Car.findAll());
+        modelMap.put("cars", cardao.findall());
         return "all";
     }
 }
